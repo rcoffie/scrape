@@ -20,7 +20,7 @@ jobs:
     - name: '🛒 Checkout show-scraper'
       uses: actions/checkout@v3
       with:
-        repository: /scraper
+        repository: ./scrape
         ref: main
         path: ./content
 
@@ -36,12 +36,12 @@ jobs:
 
     - name: '⚒️ Scrape'
       run: |
-        cd ./show-scraper
+        cd ./content
         DATA_DIR=../content LATEST_ONLY=true pipenv run ./scraper.py
 
     - name: '✉️ Commit'
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: 'Automatically scraped and committed via a GitHub Action.'
-        repository: ./scraper
+        repository: ./scrape
 
