@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out this repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Fetch latest data
         run: |-
           curl -X "https://www.nu.nl/block/lean_json/articlelist?limit=20&offset=0&source=latest&filter=site" | jq '.data.context.articles' > headlines.json
