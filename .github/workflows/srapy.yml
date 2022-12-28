@@ -1,0 +1,21 @@
+name: Scrape File
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        pip install requests BeautifulSoup
+    - name: Scrape File
+      run: |
+        python scrape.py
+    - name: Save File
+      run: |
+        mv file.txt /content
