@@ -42,8 +42,12 @@ jobs:
         # Save the data to a file
         with open('/path/to/file.txt', 'w') as f:
             f.write(title + '\n' + description + '\n' + link + '\n')
-    - name: Write file
-      uses: actions/write-file@v2
+    - name: Overwrite file
+      uses: "DamianReeves/write-file-action@master"
       with:
-        path: '/path/to/file.txt'
-        content: ${{ steps.scrape-rss-feed.outputs.data }}
+        path: path/to/file.js
+        write-mode: overwrite
+        contents: |
+          console.log('some contents')
+    
+
